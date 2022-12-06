@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>page</title>
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+</head>
+<body>
+
+    <div id="container">
+        <div id="topBox">
+            <div id="rock">
+                <p>rock</p>
+                <div id="image1"></div>
+            </div>
+            <div id="paper">
+                <p>paper</p>
+                <div id="image2"></div>
+            </div>
+            <div id="scissors">
+                <p>scissors</p>
+                <div id="image3"></div>
+            </div>
+        </div>
+        <div id="botBox">
+            <div id="left">
+                <p class="player">You</p>
+                <div id="secim1"></div>
+                <div id="leftPhoto"></div>
+            </div>
+            <div id="right">
+                <p class="player">AI</p>
+                <div id="secim2"></div>
+                <div id="rightPhoto"></div>
+            </div>
+        </div>
+        <div class="result">
+            <div class="py1">
+                <div id="score1"></div>
+            </div>
+            <div class="py2">
+                <div id="score2"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var rock = document.getElementById("rock"),
+            paper = document.getElementById("paper"),
+            scissors = document.getElementById("scissors"),
+            secim1 = document.getElementById("secim1"),
+            secim2 = document.getElementById("secim2"),
+            score1 = document.getElementById("score1"),
+            score2 = document.getElementById("score2"),
+            leftPhoto = document.getElementById("leftPhoto");
+
+        var player1 = "";
+        var player2 = "";
+        var deger = ["rock", "kağıt", "scissors"];
+        function skor() {
+            score1.innerHTML = player1.length;
+            score2.innerHTML = player2.length;
+        }
+        function right(a) {
+            rightPhoto.style.background = "url("+a+")";
+            rightPhoto.style.backgroundSize = "cover"
+        }
+
+        rock.onclick = function () {
+            x = Math.floor(Math.random() * 3);
+            secim1.innerHTML = "rock";
+            leftPhoto.style.background = "url(rock.png)";
+            leftPhoto.style.backgroundSize = "cover"
+            if (x == 0) {
+                secim2.innerHTML = "rock";
+                right("rock.png")
+            } else if (x == 1) {
+                player2 += "1";
+                secim2.innerHTML = "paper";
+                right("paper.png")
+            } else if (x == 2) {
+                secim2.innerHTML = "scissors";
+                player1 += "1";
+                right("scissors.png")
+            }
+            skor();
+        }
+
+        paper.onclick = function () {
+            x = Math.floor(Math.random() * 3);
+            secim1.innerHTML = "paper";
+            leftPhoto.style.background = "url(paper.png)";
+            leftPhoto.style.backgroundSize = "cover";
+            if (x == 0) {
+                secim2.innerHTML = "rock";
+                player1 += "1";
+                right("rock.png")
+            } else if (x == 1) {
+                secim2.innerHTML = "paper"
+                right("paper.png")
+            } else if (x == 2) {
+                secim2.innerHTML = "scissors"
+                player2 += 1;
+                right("scissors.png")
+            }
+            skor();
+        }
+
+        scissors.onclick = function () {
+            x = Math.floor(Math.random() * 3);
+            secim1.innerHTML = "scissors";
+            leftPhoto.style.background = "url(scissors.png)";
+            leftPhoto.style.backgroundSize = "cover"
+            if (x == 0) {
+                secim2.innerHTML = "rock";
+                player2 += "1";
+                right("rock.png")
+            } else if (x == 1) {
+                secim2.innerHTML = "paper"
+                player1 += "1";
+                right("paper.png")
+            } else if (x == 2) {
+                secim2.innerHTML = "scissors";
+                right("scissors.png")
+            }
+            skor();
+        }
+
+
+        
+    </script>
+
+
+</body>
+</html>
